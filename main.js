@@ -9,92 +9,84 @@ for(let i = 0; i < harryPotterTitles.length; i++){
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-// 2. STUDENT GRADES PART 2
+// 2. [REFACTORED] STUDENT GRADES PART 2
 
 grades= [92, 91, 75, 66, 52, 90, 83, 85, 64, 90, 72, 88, 77, 98, 100, 73, 92]
 
+//declare variables to count how many of each letter grade 
 let aCount = 0;
 let bCount = 0;
 let cCount = 0;
 let dCount = 0;
 let fCount = 0;
+
+//declare variables to track grade with highest count
 let largestSoFar = 0;
 let mostCommon
+
+//declare variables to get average
+let total = 0;
 let average = 0;
 
+//loop through grades array
 for(var i = 0; i < grades.length; i++){
   
+//if the grade is an A, we count it. 
+//If the count is now the highest, we change mostCommon and largestSoFar to reflect that
   if(grades[i] > 92){
     aCount++;
-    average = average + grades[i];
-  }
+    if(aCount>largestSoFar){
+      mostCommon = 'A';
+      largestSoFar = aCount;
+    }}
   
+//repeat for each letter grade
   else if(grades[i] > 84){
     bCount++;
-    average = average + grades[i];
-  }
+    if(bCount>largestSoFar){
+      mostCommon = 'B';
+      largestSoFar = bCount;
+    }}
   
  else if(grades[i] > 76){
     cCount++;
-    average = average + grades[i];
-  }
+    if(cCount>largestSoFar){
+      mostCommon = 'C';
+      largestSoFar = cCount;
+    }}
   
    else if(grades[i] > 64){
     dCount++;
-    average = average + grades[i];
-  }
+    if(dCount>largestSoFar){
+      mostCommon = 'D';
+      largestSoFar = dCount;
+   }}
 
   else {
     fCount++;
-    average = average + grades[i];
-  }
+    if(fCount>largestSoFar){
+      mostCommon = 'F';
+      largestSoFar = fCount;
+  }}
+
+//add each grade score to the TOTAL so we can find out the average after we're done looping
+  total += grades[i];
 }
 
-for(var i = 0; i < 5; i++){
+//find the average
+average = (total / grades.length).toFixed(0);
 
-if(aCount>largestSoFar){
-  mostCommon = 'A';
-  largestSoFar = aCount;
-}
-  
-  else if(bCount>largestSoFar){
-  mostCommon = 'B';
-  largestSoFar = bCount;
-}
-
-else if(cCount>largestSoFar){
-  mostCommon = 'C';
-  largestSoFar = cCount;
-}
-
-else if(dCount>largestSoFar){
-  mostCommon = 'D';
-  largestSoFar = dCount;
-}
-
-else if(fCount>largestSoFar){
-  mostCommon = 'F';
-  largestSoFar = fCount;
-}
-  
-else{}
-}
-
-
-average = (average / grades.length).toFixed(0);
-
-//How many students got A's?
+//log how many students got A's
 console.log('There were ' + aCount + ' As');
 
-//How many students got B's?
+//log how many students got B's
 console.log('There were ' + bCount + ' Bs');
 
-//Which was the most common letter grade?
+//log which was the most common letter grade
 console.log('The most common grade in the class was ' + mostCommon + '. There were ' + largestSoFar);
 
-//What was the average percentage grade in the class?
+//log the average percentage grade of the class
 console.log('The average grade in the class was ' + average);
-
 
 /////////////////////////////////////////////////////////////////////////////////////
 // 3. Two, Four, Six, Eight - Who do we appreciate?! CHEER
